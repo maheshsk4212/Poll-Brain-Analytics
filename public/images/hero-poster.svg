@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Poll Brain Analytics visual poster">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A237E"/>
+      <stop offset="55%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#138808"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <circle cx="220" cy="180" r="170" fill="#FF9933" fill-opacity="0.2"/>
+  <circle cx="1360" cy="740" r="220" fill="#FFFFFF" fill-opacity="0.12"/>
+  <g fill="#ffffff" fill-opacity="0.24">
+    <rect x="220" y="260" width="1160" height="1"/>
+    <rect x="220" y="360" width="1160" height="1"/>
+    <rect x="220" y="460" width="1160" height="1"/>
+    <rect x="220" y="560" width="1160" height="1"/>
+  </g>
+</svg>
