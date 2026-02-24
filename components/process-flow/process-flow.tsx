@@ -11,7 +11,7 @@ export function ProcessFlow({ steps }: ProcessFlowProps) {
   return (
     <div className="relative mt-10">
       <div className="absolute left-0 right-0 top-7 hidden h-0.5 bg-gradient-to-r from-saffron via-navyBlue to-indiaGreen md:block" />
-      <ol className="grid gap-5 md:grid-cols-3 xl:grid-cols-6">
+      <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         {steps.map((step, index) => (
           <motion.li
             key={step.title}

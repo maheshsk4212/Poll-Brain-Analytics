@@ -82,23 +82,28 @@ export function SiteNavbar() {
           })}
           <Link
             href="/contact"
-            className="ml-2 rounded-full bg-gradient-to-r from-saffron via-white to-indiaGreen px-5 py-2 text-sm font-bold text-slate-900 shadow-lg transition-all duration-300 hover:shadow-saffron/20 hover:scale-[1.02] active:scale-95"
+            className="ml-2 rounded-full bg-saffron px-5 py-2 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:bg-[#f08a1d] hover:shadow-saffron/20 active:scale-95"
           >
             Schedule Consultation
           </Link>
         </div>
       </nav>
 
-      <div id="mobile-menu" className={cn("border-t border-slate-200 bg-white lg:hidden", open ? "block" : "hidden")}>
-        <div className="section-shell flex flex-col gap-2 py-4">
-          {navItems.map((item) => (
+      <div id="mobile-menu" className={cn(
+        "absolute inset-x-0 top-full overflow-hidden border-t border-slate-200 bg-white shadow-2xl transition-all duration-300 ease-in-out lg:hidden",
+        open ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+      )}>
+        <div className="section-shell flex flex-col gap-2 py-6">
+          {navItems.map((item, index) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
               className={cn(
-                "rounded-md px-2 py-2 text-sm text-slate-700 transition hover:bg-slate-100",
-                pathname === item.href ? "bg-slate-100 text-slate-900" : ""
+                "rounded-xl px-4 py-3 text-base capitalize transition-all duration-200",
+                pathname === item.href
+                  ? "bg-slate-900 font-bold text-white"
+                  : "font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
               )}
             >
               {item.label}
@@ -107,7 +112,7 @@ export function SiteNavbar() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-2 rounded-full bg-gradient-to-r from-saffron via-white to-indiaGreen px-4 py-2 text-center text-sm font-bold text-slate-900 shadow-md transition-all active:scale-95"
+            className="mt-4 rounded-xl bg-saffron px-4 py-4 text-center text-base font-bold text-slate-950 shadow-lg shadow-saffron/20 transition-all active:scale-95"
           >
             Schedule Consultation
           </Link>

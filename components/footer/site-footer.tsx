@@ -16,7 +16,7 @@ export function SiteFooter() {
         />
         <div className="absolute inset-0 bg-slate-950/90" />
 
-        <div className="section-shell relative grid gap-10 py-14 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div className="section-shell relative grid gap-12 py-16 md:grid-cols-[1.5fr_1fr_1fr] md:py-20">
           <div>
             <h3 className="text-xl font-semibold">{siteConfig.name}</h3>
             <p className="mt-2 max-w-sm text-sm text-slate-300">{siteConfig.tagline}</p>

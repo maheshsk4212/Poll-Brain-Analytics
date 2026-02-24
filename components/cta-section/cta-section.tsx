@@ -25,7 +25,7 @@ export function CtaSection({
           <Image src="/images/hyderabad-charminar.jpg" alt="" fill className="object-cover" />
         </div>
         <div className="relative">
-          <h2 className="text-3xl font-semibold sm:text-4xl">{title}</h2>
+          <h2 className="text-2xl font-bold sm:text-4xl md:text-5xl">{title}</h2>
           <p className="mt-4 max-w-2xl text-slate-200">{description}</p>
           <div className="mt-8">
             <ButtonLink href={buttonHref} className="bg-saffron text-slate-950 hover:bg-[#f0891d] focus-visible:ring-saffron">

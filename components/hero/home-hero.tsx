@@ -116,13 +116,13 @@ export function HomeHero() {
       <div className="absolute inset-0 -z-20 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent" />
 
       {/* Content Container */}
-      <div className="section-shell relative flex h-full items-center pb-24 pt-4 sm:pt-6 lg:pb-32">
+      <div className="section-shell relative flex h-full items-center pb-20 pt-16 sm:pb-24 sm:pt-6 lg:pb-32">
         <motion.div
           key={activeSlide.id + "-content"}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="relative max-w-4xl"
+          className="relative w-full max-w-4xl"
         >
           <div className="flex flex-col items-start space-y-4 md:space-y-6">
             {/* Tag/Label */}
@@ -131,34 +131,34 @@ export function HomeHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <span className="inline-block rounded-sm bg-saffron px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-950">
+              <span className="inline-block rounded-sm bg-saffron px-3 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-950">
                 {activeSlide.label}
               </span>
             </motion.div>
 
             {/* Main Title */}
-            <h1 className="text-5xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.5rem] drop-shadow-2xl">
+            <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.5rem] drop-shadow-2xl">
               {activeSlide.title.split('.').map((part, i) => (
                 <span key={i} className="block">{part}{i === 0 && part.length > 0 ? '.' : ''}</span>
               ))}
             </h1>
 
             {/* Description */}
-            <p className="max-w-2xl text-lg font-medium leading-relaxed text-slate-200 subpixel-antialiased drop-shadow-lg">
+            <p className="max-w-2xl text-base sm:text-lg font-medium leading-relaxed text-slate-200 subpixel-antialiased drop-shadow-lg">
               {activeSlide.description}
             </p>
 
             {/* Actions */}
-            <div className="flex flex-col gap-4 pt-4 sm:flex-row sm:items-center">
+            <div className="flex w-full flex-col gap-3 pt-4 sm:w-auto sm:flex-row sm:items-center">
               <ButtonLink
                 href="/contact"
-                className="bg-saffron px-8 py-4 text-slate-950 hover:bg-saffron/90 transition-all duration-300 shadow-xl shadow-saffron/20 border-none rounded-sm"
+                className="w-full bg-saffron px-8 py-4 text-center text-slate-950 hover:bg-saffron/90 transition-all duration-300 shadow-xl shadow-saffron/20 border-none rounded-sm sm:w-auto"
               >
                 JOIN THE CAMPAIGN
               </ButtonLink>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-sm border border-white/80 bg-transparent px-8 py-4 text-sm font-bold text-white transition-all duration-300 hover:bg-white hover:text-slate-950 active:scale-95"
+                className="inline-flex w-full items-center justify-center rounded-sm border border-white/80 bg-transparent px-8 py-4 text-center text-sm font-bold text-white transition-all duration-300 hover:bg-white hover:text-slate-950 active:scale-95 sm:w-auto"
               >
                 EXPLORE ARCHITECTURE
               </Link>
@@ -172,7 +172,7 @@ export function HomeHero() {
                 transition={{ delay: 0.6 }}
                 className="flex items-center gap-3 pt-4 text-xs font-bold uppercase tracking-[0.2em] text-white/60"
               >
-                <div className="h-0.5 w-8 bg-saffron" />
+                <div className="hidden h-0.5 w-8 bg-saffron sm:block" />
                 {activeSlide.cta}
               </motion.div>
             )}
@@ -184,14 +184,14 @@ export function HomeHero() {
       <div className="absolute inset-x-0 bottom-8">
         <div className="section-shell">
           <div className="flex items-center justify-between gap-4">
-            <div className="flex gap-3 overflow-x-auto pb-2 pr-2 scrollbar-hide">
+            <div className="flex gap-3 overflow-x-auto pb-4 pr-4 scrollbar-hide md:pb-2">
               {slides.map((slide, index) => (
                 <button
                   key={slide.id}
                   type="button"
                   onClick={() => setActive(index)}
                   className={cn(
-                    "relative h-16 w-28 shrink-0 overflow-hidden rounded-sm border-2 transition-all duration-300 sm:h-20 sm:w-36",
+                    "relative h-14 w-24 shrink-0 overflow-hidden rounded-sm border-2 transition-all duration-300 sm:h-20 sm:w-36",
                     index === active
                       ? "border-saffron scale-105 shadow-2xl brightness-125"
                       : "border-white/20 opacity-40 hover:opacity-100 hover:border-white/60"
