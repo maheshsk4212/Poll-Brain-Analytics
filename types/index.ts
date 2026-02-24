@@ -21,3 +21,9 @@ export type InsightPost = {
   date: string;
   image: string;
 };
+
+export type WhyChooseUsItem = {
+  title: string;
+  description: string;
+  iconName: string;
+};

@@ -1,4 +1,4 @@
-import type { InsightPost, NavItem, ProcessStep, Service } from "@/types";
+import type { InsightPost, NavItem, ProcessStep, Service, WhyChooseUsItem } from "@/types";
 
 export const navItems: NavItem[] = [
   { label: "Home", href: "/" },
@@ -37,12 +37,32 @@ export const homeCoreServices: Service[] = [
   }
 ];
 
-export const whyChooseUs = [
-  "Data-backed decision making",
-  "Constituency-level micro strategy",
-  "Integrated on-ground and digital approach",
-  "Confidential and high-trust operations",
-  "Result-oriented execution framework"
+export const whyChooseUs: WhyChooseUsItem[] = [
+  {
+    title: "Data-backed decision making",
+    description: "Every move is driven by hard evidence and booth-level analytics, not just intuition.",
+    iconName: "Database"
+  },
+  {
+    title: "Constituency-level micro strategy",
+    description: "Hyper-local planning that addresses specific regional dynamics and voter concerns.",
+    iconName: "Map"
+  },
+  {
+    title: "Integrated on-ground and digital approach",
+    description: "Seamless synchronization between field operations and digital narrative control.",
+    iconName: "Globe"
+  },
+  {
+    title: "Confidential and high-trust operations",
+    description: "Professional discretion and secure workflows for high-stakes political consulting.",
+    iconName: "ShieldCheck"
+  },
+  {
+    title: "Result-oriented execution framework",
+    description: "Structured monitoring and adaptive response models to ensure campaign milestones.",
+    iconName: "TrendingUp"
+  }
 ];
 
 export const processSteps: ProcessStep[] = [

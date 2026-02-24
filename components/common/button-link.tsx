@@ -1,9 +1,10 @@
+import { ReactNode } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 type ButtonLinkProps = {
   href: string;
-  children: string;
+  children: ReactNode;
   variant?: "primary" | "secondary";
   className?: string;
 };

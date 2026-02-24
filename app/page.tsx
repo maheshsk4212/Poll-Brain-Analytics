@@ -122,26 +122,75 @@ export default function HomePage() {
       </section>
 
       <section className="section-shell mt-24">
-        <SectionHeading eyebrow="Why Choose Us" title="Built for High-Stakes Electoral Environments" />
-        <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-5 shadow-premium sm:p-7">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {whyChooseUs.map((point, index) => (
-              <Reveal key={point} delay={index * 0.06}>
-                <div className="group relative h-full overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-5 transition hover:-translate-y-1 hover:shadow-lg">
-                  <div
-                    className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-saffron via-white to-indiaGreen"
-                    aria-hidden="true"
-                  />
-                  <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-navyBlue text-xs font-semibold text-white">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
-                  <p className="text-sm leading-relaxed text-slate-700">{point}</p>
-                </div>
-              </Reveal>
-            ))}
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-slate-800 bg-slate-950 px-6 py-16 shadow-2xl sm:px-12 sm:py-20">
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              backgroundImage: `radial-gradient(circle at 20% 30%, rgba(255, 153, 51, 0.4), transparent 40%), radial-gradient(circle at 80% 70%, rgba(19, 136, 8, 0.3), transparent 40%)`
+            }}
+            aria-hidden="true"
+          />
+
+          <div className="relative z-10">
+            <div className="flex flex-col items-center text-center">
+              <span className="inline-block rounded-full bg-slate-800/50 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-saffron">
+                Why Choose Us
+              </span>
+              <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-5xl">
+                Built for High-Stakes <span className="text-indiaGreen">Electoral Environments</span>
+              </h2>
+            </div>
+
+            <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {whyChooseUs.map((item, index) => {
+                const IconComponent = (() => {
+                  const {
+                    Database,
+                    Map: MapIcon,
+                    Globe,
+                    ShieldCheck,
+                    TrendingUp
+                  } = require("lucide-react");
+                  const icons: Record<string, any> = {
+                    Database,
+                    Map: MapIcon,
+                    Globe,
+                    ShieldCheck,
+                    TrendingUp
+                  };
+                  return icons[item.iconName];
+                })();
+
+                return (
+                  <Reveal key={item.title} delay={index * 0.1}>
+                    <div className="group relative h-full rounded-2xl border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10 hover:shadow-[0_0_30px_-10px_rgba(255,153,51,0.3)]">
+                      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 shadow-lg transition-transform group-hover:scale-110">
+                        {IconComponent && <IconComponent className="h-7 w-7 text-saffron" />}
+                      </div>
+                      <h3 className="mb-3 text-xl font-bold text-white transition-colors group-hover:text-saffron">
+                        {item.title}
+                      </h3>
+                      <p className="text-balance text-sm leading-relaxed text-slate-400">
+                        {item.description}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+
+            <div className="mt-20 flex flex-col items-center border-t border-white/10 pt-10 text-center">
+              <p className="max-w-2xl text-2xl font-bold italic tracking-tight text-white sm:text-3xl">
+                &ldquo;We do not run campaigns. We design political victories.&rdquo;
+              </p>
+              <div className="mt-4 flex h-1.5 w-24 gap-1">
+                <div className="h-full w-1/3 rounded-full bg-saffron" />
+                <div className="h-full w-1/3 rounded-full bg-white" />
+                <div className="h-full w-1/3 rounded-full bg-indiaGreen" />
+              </div>
+            </div>
           </div>
         </div>
-        <p className="mt-8 text-xl font-semibold text-navyBlue">We do not run campaigns. We design political victories.</p>
       </section>
 
       <section className="section-shell mt-24">

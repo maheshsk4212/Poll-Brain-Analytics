@@ -18,20 +18,30 @@ export function SiteNavbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const isHomePage = pathname === "/";
+  // Always use solid styling for premium legibility and consistency, 
+  // as the transparent-to-solid transition was causing visibility issues on light hero slides.
+  const isSolid = true;
+
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition duration-300",
-        scrolled ? "bg-white/80 shadow-sm backdrop-blur-xl" : "bg-transparent"
+        isSolid ? "bg-white/80 shadow-sm backdrop-blur-xl" : "bg-transparent"
       )}
     >
       <nav className="section-shell flex h-20 items-center justify-between" aria-label="Main navigation">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 px-1 py-2"
+          className="group inline-flex items-center gap-2 px-1 py-2"
         >
-          <span className="inline-block h-8 w-1 rounded bg-saffron" aria-hidden="true" />
-          <span className="text-lg font-semibold tracking-tight text-slate-900">Poll Brain Analytics</span>
+          <span className="inline-block h-8 w-1.5 rounded-full bg-saffron shadow-[0_0_12px_rgba(245,158,11,0.6)]" aria-hidden="true" />
+          <span className={cn(
+            "text-xl font-bold tracking-tight transition-colors duration-300",
+            isSolid ? "text-slate-900" : "text-white drop-shadow-md"
+          )}>
+            Poll Brain <span className="text-saffron">Analytics</span>
+          </span>
         </Link>
 
         <button
@@ -44,7 +54,12 @@ export function SiteNavbar() {
           Menu
         </button>
 
-        <div className="hidden items-center gap-2 rounded-full border border-slate-300/70 bg-transparent p-2 lg:flex">
+        <div className={cn(
+          "hidden items-center gap-1 rounded-full border p-1.5 transition-all duration-300 lg:flex",
+          isSolid
+            ? "border-slate-200 bg-white/50 shadow-sm backdrop-blur-md"
+            : "border-white/20 bg-white/10 shadow-xl backdrop-blur-xl"
+        )}>
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -52,10 +67,13 @@ export function SiteNavbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-full px-3 py-2 text-sm font-medium transition",
+                  "rounded-full px-4 py-2 text-sm font-bold transition-all duration-300",
                   isActive
-                    ? "bg-slate-900 text-white"
-                    : "text-slate-700 hover:bg-slate-100/70 hover:text-slate-900"
+                    ? (isSolid ? "bg-slate-900 text-white" : "bg-white text-slate-900 shadow-lg")
+                    : (isSolid
+                      ? "text-slate-600 hover:bg-slate-900/5 hover:text-slate-900"
+                      : "text-white/90 hover:bg-white/20 hover:text-white"
+                    )
                 )}
               >
                 {item.label}
@@ -64,7 +82,7 @@ export function SiteNavbar() {
           })}
           <Link
             href="/contact"
-            className="ml-2 rounded-full bg-saffron px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-[#f08a1d]"
+            className="ml-2 rounded-full bg-gradient-to-r from-saffron via-white to-indiaGreen px-5 py-2 text-sm font-bold text-slate-900 shadow-lg transition-all duration-300 hover:shadow-saffron/20 hover:scale-[1.02] active:scale-95"
           >
             Schedule Consultation
           </Link>
@@ -89,7 +107,7 @@ export function SiteNavbar() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-2 rounded-full bg-saffron px-4 py-2 text-center text-sm font-semibold text-slate-900"
+            className="mt-2 rounded-full bg-gradient-to-r from-saffron via-white to-indiaGreen px-4 py-2 text-center text-sm font-bold text-slate-900 shadow-md transition-all active:scale-95"
           >
             Schedule Consultation
           </Link>
