@@ -21,7 +21,7 @@ export function PageBanner({
 }: PageBannerProps) {
   return (
     <section className="section-shell mt-10">
-      <div className="relative isolate overflow-hidden rounded-[2rem] border border-white/20 shadow-premium min-h-[400px] flex flex-col justify-center">
+      <div className="relative isolate overflow-hidden rounded-[2rem] border border-white/20 bg-slate-950 shadow-premium min-h-[400px] flex flex-col justify-center">
         <Image
           src={image}
           alt={title}
@@ -29,9 +29,9 @@ export function PageBanner({
           height={900}
           className="absolute inset-0 -z-20 h-full w-full object-cover"
         />
-        {/* Dark overlay for text visibility on any background */}
-        <div className="absolute inset-0 -z-10 bg-black/60" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-background/90 via-background/60 to-transparent" />
+        {/* Fixed dark overlay for text visibility on image banner - independent of theme switcher */}
+        <div className="absolute inset-0 -z-10 bg-slate-950/70" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-transparent" />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_75%_20%,rgba(255,106,0,0.25),transparent_45%)]" />
 
         <div className="grid gap-10 px-6 py-14 sm:px-10 md:grid-cols-[1.2fr_0.8fr] md:py-16">

@@ -173,14 +173,14 @@ export const caseStudies = [
     approach:
       "Data-driven voter segmentation with unified narrative positioning across local clusters.",
     outcome: "Increased vote share and a stronger grassroots volunteer network.",
-    image: "/images/field-outreach.jpg"
+    image: "/images/booth-management.png"
   },
   {
     title: "Parliamentary Campaign - Regional Party",
     challenge: "Urban perception gap",
     approach: "Digital-first communication with constituency-level targeted outreach.",
     outcome: "Higher public engagement and improved candidate visibility.",
-    image: "/images/india-flag-street.jpg"
+    image: "/images/political-street.png"
   }
 ];
 
@@ -199,7 +199,7 @@ export const insightPosts: InsightPost[] = [
     excerpt:
       "How demographic shifts and voter issue-priorities are redefining modern constituency playbooks.",
     date: "Feb 2026",
-    image: "/images/india-flag-street.jpg"
+    image: "/images/political-street.png"
   },
   {
     title: "Role of Data Intelligence in Campaign Decision Cycles",
@@ -215,7 +215,7 @@ export const insightPosts: InsightPost[] = [
     excerpt:
       "Frameworks for response speed, narrative control and stakeholder alignment under pressure.",
     date: "Dec 2025",
-    image: "/images/media-room.jpg"
+    image: "/images/media-room-abstract.png"
   },
   {
     title: "Constituency-Level Strategic Planning That Scales",
@@ -231,7 +231,7 @@ export const insightPosts: InsightPost[] = [
     excerpt:
       "Why disciplined booth operations often determine outcomes in close multi-corner contests.",
     date: "Oct 2025",
-    image: "/images/field-outreach.jpg"
+    image: "/images/booth-management.png"
   },
   {
     title: "From Sentiment to Narrative: Closing the Feedback Loop",

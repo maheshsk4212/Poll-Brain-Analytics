@@ -18,7 +18,7 @@ export default function ServicesPage() {
         eyebrow="Our Services"
         title="Structured Consulting for Every Campaign Layer"
         description="From constituency profiling to polling-day command systems, our services are designed as one integrated campaign architecture."
-        image="/images/media-room.jpg"
+        image="/images/media-room-abstract.png"
         ctaLabel="Discuss Service Scope"
       />
 
@@ -35,7 +35,7 @@ export default function ServicesPage() {
 
         <div className="space-y-4">
           <ImagePanel src="/images/strategy-board.jpg" alt="Strategy board session" className="h-[300px]" />
-          <ImagePanel src="/images/field-outreach.jpg" alt="Ground outreach operations" className="h-[300px]" />
+          <ImagePanel src="/images/booth-management.png" alt="Ground outreach operations" className="h-[300px]" />
         </div>
       </section>
     </>

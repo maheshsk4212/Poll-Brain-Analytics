@@ -16,7 +16,7 @@ export default function InsightsPage() {
         eyebrow="Political Intelligence & Insights"
         title="Research-Backed Perspectives"
         description="We publish perspectives on elections, political communication, campaign management and voter behavior with strategic applicability."
-        image="/images/media-room.jpg"
+        image="/images/media-room-abstract.png"
         ctaLabel="Subscribe for Insights"
       />
 

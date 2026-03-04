@@ -42,10 +42,10 @@
   --strategic-blue: #0A3D91;
   --border-color: #E2E8F0;
   --border-color-2: rgba(0, 0, 0, 0.08);
-  --white: #0F172A;
+  --white: #FFFFFF;
   --text-primary: #0F172A;
-  --text-secondary: #374151;
-  --text-muted: #6B7280;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
   --card-bg: #FFFFFF;
   --card-border: #E2E8F0;
   --input-bg: #FFFFFF;
@@ -129,70 +129,99 @@ a {
 [data-theme="light"] *,
 [data-theme="light"] *::before,
 [data-theme="light"] *::after {
-  transition-property: background-color, border-color, color, box-shadow;
-  transition-duration: 0.25s;
-  transition-timing-function: ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.15s ease, box-shadow 0.2s ease;
 }
 
-/* Remove this aggressive override - it breaks accessibility on dark image overlays */
-/* [data-theme="light"] [class*="text-white"] {
-  color: var(--text-primary) !important;
-} */
+/* 
+   Refined overrides: Only apply to elements using theme variables or 
+   generic background classes. Avoid breaking hardcoded dark UI sections. 
+*/
 
-/* BACKGROUNDS: dark surface → light card */
-[data-theme="light"] [class*="bg-surface"] {
-  background-color: var(--surface) !important;
+/* Refined overrides: Fixes site-wide unreadable text while keeping dark banners dark */
+[data-theme="light"] body {
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+/* BACKGROUNDS: force surface variable only on elements using standard surface classes */
+[data-theme="light"] .bg-surface,
+[data-theme="light"] .bg-background {
+  background-color: var(--background) !important;
+}
+
+[data-theme="light"] .bg-card-bg {
+  background-color: var(--card-bg) !important;
 }
 
 [data-theme="light"] [class*="bg-background"] {
   background-color: var(--background) !important;
 }
 
-/* Translucent white overlays (bg-white/5, bg-white/10, etc.) → subtle light tint */
-[data-theme="light"] [class*="bg-white\/"] {
-  background-color: rgba(15, 23, 42, 0.04) !important;
+/* Fix for forced white text inside adaptive containers */
+[data-theme="light"] [class*="bg-surface"] .text-white,
+[data-theme="light"] [class*="bg-surface"] [class*="text-white/"],
+[data-theme="light"] [class*="bg-background"] .text-white,
+[data-theme="light"] [class*="bg-background"] [class*="text-white/"] {
+  color: var(--text-primary) !important;
 }
 
-/* Translucent black overlays → light equivalents */
-[data-theme="light"] [class*="bg-black\/"] {
-  background-color: rgba(15, 23, 42, 0.03) !important;
+[data-theme="light"] [class*="bg-surface"] .text-slate-300,
+[data-theme="light"] [class*="bg-surface"] .text-slate-200,
+[data-theme="light"] [class*="bg-surface"] .text-white\/70,
+[data-theme="light"] [class*="bg-surface"] .text-white\/60 {
+  color: var(--text-secondary) !important;
 }
 
-/* BORDERS: white/x → subtle dark border */
-[data-theme="light"] [class*="border-white\/"] {
-  border-color: var(--border-color) !important;
+/* Fix for forced white text inside adaptive containers */
+/* Excludes saffron elements so button text stays white */
+[data-theme="light"] [class*="bg-surface"]:not([class*="bg-saffron"]) .text-white,
+[data-theme="light"] [class*="bg-surface"]:not([class*="bg-saffron"]) [class*="text-white/"],
+[data-theme="light"] [class*="bg-background"]:not([class*="bg-saffron"]) .text-white,
+[data-theme="light"] [class*="bg-background"]:not([class*="bg-saffron"]) [class*="text-white/"] {
+  color: var(--text-primary) !important;
 }
 
-/* Backdrop blur panels → white background */
-[data-theme="light"] [class*="backdrop-blur"] {
-  background-color: rgba(255, 255, 255, 0.85) !important;
+[data-theme="light"] [class*="bg-surface"] .text-slate-300,
+[data-theme="light"] [class*="bg-surface"] .text-slate-200,
+[data-theme="light"] [class*="bg-surface"] .text-white\/70,
+[data-theme="light"] [class*="bg-surface"] .text-white\/60,
+[data-theme="light"] [class*="bg-background"] .text-slate-300,
+[data-theme="light"] [class*="bg-background"] .text-slate-200,
+[data-theme="light"] [class*="bg-background"] .text-white\/70,
+[data-theme="light"] [class*="bg-background"] .text-white\/60 {
+  color: var(--text-secondary) !important;
 }
 
-/* Radial gradient dark overlays: make subtle */
-[data-theme="light"] .bg-\[radial-gradient\(circle_at_80\%_50\%\,rgba\(10\,61\,145\,0\.15\)\,transparent_60\%\)\],
-[data-theme="light"] .bg-\[radial-gradient\(circle_at_20\%_80\%\,rgba\(255\,106\,0\,0\.05\)\,transparent_50\%\)\] {
-  opacity: 0.4;
-}
-
-/* Hero section: keep heading text readable */
-[data-theme="light"] h1,
-[data-theme="light"] h2,
-[data-theme="light"] h3,
-[data-theme="light"] h4,
-[data-theme="light"] h5,
-[data-theme="light"] h6 {
+/* Heading & Paragraph: Use theme colors for content outside fixed dark sections */
+[data-theme="light"] :not([class*="bg-slate-950"]):not([class*="bg-black"]):not([class*="bg-saffron"])>h1,
+[data-theme="light"] :not([class*="bg-slate-950"]):not([class*="bg-black"]):not([class*="bg-saffron"])>h2,
+[data-theme="light"] :not([class*="bg-slate-950"]):not([class*="bg-black"]):not([class*="bg-saffron"])>h3,
+[data-theme="light"] :not([class*="bg-slate-950"]):not([class*="bg-black"]):not([class*="bg-saffron"])>h4,
+[data-theme="light"] :not([class*="bg-slate-950"]):not([class*="bg-black"]):not([class*="bg-saffron"])>p,
+[data-theme="light"] :not([class*="bg-slate-950"]):not([class*="bg-black"]):not([class*="bg-saffron"])>span:not(.text-white) {
   color: var(--text-primary);
 }
 
-/* Paragraph/description text */
-[data-theme="light"] p {
+[data-theme="light"] :not([class*="bg-slate-950"]):not([class*="bg-black"]) p {
   color: var(--text-secondary);
 }
 
-/* Section panels: use card background in light mode */
-[data-theme="light"] [class*="bg-gradient-to-br"] {
-  background-image: none !important;
-  background-color: var(--surface) !important;
+/* PROTECT FIXED DARK SECTIONS: Any text inside slate-950 or black containers must stay white */
+[data-theme="light"] .bg-slate-950,
+[data-theme="light"] .bg-slate-950 *,
+[data-theme="light"] .bg-black,
+[data-theme="light"] .bg-black * {
+  --text-primary: #FFFFFF !important;
+  --text-secondary: rgba(255, 255, 255, 0.7) !important;
+  color: #FFFFFF !important;
+}
+
+/* Specific exclusion for saffron buttons inside dark banners - protect their black text on orange */
+[data-theme="light"] .bg-slate-950 .bg-saffron,
+[data-theme="light"] .bg-slate-950 .bg-saffron *,
+[data-theme="light"] .bg-black .bg-saffron,
+[data-theme="light"] .bg-black .bg-saffron * {
+  color: #0F172A !important;
 }
 
 /* Keep saffron buttons as-is */
@@ -206,16 +235,31 @@ a {
   color: #ffffff !important;
 }
 
-/* Tricolor gradient text clips should stay vibrant */
-[data-theme="light"] [class*="bg-clip-text"] {
-  color: transparent !important;
-  -webkit-text-fill-color: transparent;
+/* Tricolor gradient text clips - ensure high contrast middle part in light mode */
+[data-theme="light"] .bg-tricolor-gradient {
   background-image: linear-gradient(90deg, #E55C00, #0F172A, #0E6606) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
 }
 
-/* Saffron border accents stay vibrant */
-[data-theme="light"] [class*="border-saffron"] {
-  border-color: var(--saffron) !important;
+[data-theme="light"] .bg-saffron-highlight {
+  background-image: linear-gradient(90deg, #E55C00, #D45000) !important;
+}
+
+/* Translucent white overlays (bg-white/5, bg-white/10, etc.) → subtle dark tint */
+[data-theme="light"] :not([class*="bg-slate-950"]):not([class*="bg-black"]) [class*="bg-white\/"] {
+  background-color: rgba(15, 23, 42, 0.06);
+}
+
+/* BORDERS: white/x → subtle dark border */
+[data-theme="light"] :not([class*="bg-slate-950"]):not([class*="bg-black"]) [class*="border-white\/"] {
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+/* Backdrop blur panels → white background */
+[data-theme="light"] :not([class*="bg-slate-950"]):not([class*="bg-black"]) [class*="backdrop-blur"] {
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 /* Section separators with white border → subtle dark */

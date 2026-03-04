@@ -42,7 +42,7 @@ export default function HomePage() {
                 eyebrow="What We Do"
                 title="WE ENGINEER ELECTORAL SUCCESS"
                 description="We partner with political leaders, candidates, and parties to design and execute data-driven, ground-integrated campaigns that deliver measurable results. Our approach combines research precision, strategic clarity, narrative control, and disciplined execution."
-                tone="light"
+                tone="default"
               />
               <div className="mt-8 grid gap-3 text-sm text-white/80 sm:grid-cols-3">
                 <div className="rounded-xl border border-white/10 bg-white/5 px-3 py-3 backdrop-blur-sm">
@@ -72,7 +72,7 @@ export default function HomePage() {
       </section>
 
       <section className="section-shell mt-24">
-        <SectionHeading eyebrow="Core Services" title="Capabilities for Victory" tone="light" />
+        <SectionHeading eyebrow="Core Services" title="Capabilities for Victory" tone="default" />
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {homeCoreServices.map((service, index) => (
             <Reveal key={service.title} delay={index * 0.06}>
@@ -87,7 +87,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(255,106,0,0.15),transparent_34%),radial-gradient(circle_at_88%_80%,rgba(10,61,145,0.15),transparent_34%)]" />
           <div className="relative grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr]">
             <ImagePanel
-              src="/images/media-room.jpg"
+              src="/images/media-room-abstract.png"
               alt="Media production for campaign narrative"
               className="h-[320px] border-white/10"
             />
@@ -166,7 +166,7 @@ export default function HomePage() {
               </p>
               <div className="mt-4 flex h-1.5 w-24 gap-1">
                 <div className="h-full w-1/3 rounded-full bg-saffron" />
-                <div className="h-full w-1/3 rounded-full bg-white" />
+                <div className="h-full w-1/3 rounded-full bg-[var(--text-primary)]" />
                 <div className="h-full w-1/3 rounded-full bg-indiaGreen" />
               </div>
             </div>
@@ -175,18 +175,20 @@ export default function HomePage() {
       </section>
 
       <section className="section-shell mt-24">
-        <SectionHeading eyebrow="Our Process" title="Research to Victory" tone="light" />
+        <SectionHeading eyebrow="Our Process" title="Research to Victory" tone="default" />
         <ProcessFlow steps={processSteps} />
       </section>
 
       <section className="section-shell mt-24">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950 shadow-2xl">
           <ImagePanel
             src="/images/campaign-outreach.png"
             alt="Grassroots campaign outreach: handing over a flyer and national flag"
             className="h-[320px] rounded-none border-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+          {/* Fixed dark overlay for text visibility on image banner - independent of theme switcher */}
+          <div className="absolute inset-0 -z-10 bg-slate-950/70" />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/60 to-transparent" />
           <div className="absolute inset-0 flex items-center">
             <div className="px-6 sm:px-12 max-w-2xl">
               <p className="text-2xl font-heading font-bold uppercase tracking-tight leading-tight text-white sm:text-4xl drop-shadow-md">
