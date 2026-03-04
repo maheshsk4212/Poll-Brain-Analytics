@@ -41,15 +41,18 @@ export function SiteNavbar() {
           </span>
         </Link>
 
-        <button
-          type="button"
-          onClick={() => setOpen((prev) => !prev)}
-          className="rounded-md border border-white/10 bg-surface px-3 py-2 text-sm text-white shadow-sm lg:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-        >
-          Menu
-        </button>
+        <div className="flex items-center gap-3 lg:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((prev) => !prev)}
+            className="rounded-md border border-[var(--border-color-2)] bg-[var(--surface)] px-3 py-2 text-sm text-[var(--text-primary)] shadow-sm"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+          >
+            Menu
+          </button>
+        </div>
 
         <div className={cn(
           "hidden items-center gap-1 rounded-sm border p-1.5 transition-all duration-300 lg:flex",
