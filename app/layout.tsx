@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { SiteNavbar } from "@/components/navbar/site-navbar";
 import { SiteFooter } from "@/components/footer/site-footer";
 import { siteConfig } from "@/config/site";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
-const poppins = Poppins({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-poppins",
-  weight: ["400", "500", "600", "700"]
+  variable: "--font-montserrat",
+  weight: ["400", "500", "600", "700", "800", "900"]
 });
 
 const inter = Inter({
@@ -45,11 +46,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} ${inter.variable} bg-white font-[var(--font-inter)] text-slate-900 antialiased`}>
-        <SiteNavbar />
-        <main className="min-h-screen pt-20">{children}</main>
-        <SiteFooter />
+    <html lang="en" data-theme="dark">
+      <body className={`${montserrat.variable} ${inter.variable} bg-background font-sans text-white antialiased`}>
+        <ThemeProvider>
+          <SiteNavbar />
+          <main className="min-h-screen pt-20">{children}</main>
+          <SiteFooter />
+        </ThemeProvider>
       </body>
     </html>
   );

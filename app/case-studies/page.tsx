@@ -17,7 +17,7 @@ export default function CaseStudiesPage() {
         eyebrow="Case Studies"
         title="Selected Campaign Engagements"
         description="Representative examples below are placeholders and can be replaced with approved public case studies."
-        image="/images/india-flag-street.jpg"
+        image="/images/campaign-outreach.png"
       />
 
       <section className="section-shell mt-16">

@@ -25,10 +25,10 @@ export function InsightsGrid() {
             type="button"
             onClick={() => setActive(category)}
             className={cn(
-              "rounded-full border px-4 py-2 text-sm font-medium transition",
+              "rounded-sm border px-4 py-2 text-sm font-bold uppercase tracking-wider transition-all duration-200",
               active === category
-                ? "border-navyBlue bg-navyBlue text-white"
-                : "border-slate-300 bg-white text-slate-700 hover:border-slate-400"
+                ? "border-saffron bg-saffron text-white shadow-md"
+                : "border-[var(--card-border)] bg-[var(--card-bg)] text-[var(--text-secondary)] hover:border-saffron/50 hover:text-saffron"
             )}
           >
             {category}
@@ -38,13 +38,13 @@ export function InsightsGrid() {
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {filtered.map((post) => (
-          <article key={post.title} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-premium">
+          <article key={post.title} className="group overflow-hidden rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-saffron/40">
             <Image src={post.image} alt={post.title} width={1600} height={900} className="h-48 w-full object-cover" />
             <div className="p-5">
-              <p className="text-xs font-semibold uppercase tracking-wide text-navyBlue">{post.category}</p>
-              <h3 className="mt-3 text-lg font-semibold text-slate-900">{post.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">{post.excerpt}</p>
-              <p className="mt-4 text-xs text-slate-500">{post.date}</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-saffron">{post.category}</p>
+              <h3 className="mt-3 text-lg font-heading font-bold tracking-tight text-[var(--text-primary)]">{post.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)]">{post.excerpt}</p>
+              <p className="mt-4 text-xs text-[var(--text-muted)]">{post.date}</p>
             </div>
           </article>
         ))}

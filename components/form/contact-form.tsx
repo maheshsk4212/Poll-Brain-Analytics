@@ -57,16 +57,16 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-premium" noValidate>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 rounded-2xl border border-white/10 bg-surface p-6 shadow-2xl" noValidate>
       {fields.map((field) => (
         <div key={field.name}>
-          <label htmlFor={field.name} className="mb-1 block text-sm font-medium text-slate-800">
+          <label htmlFor={field.name} className="mb-1 block text-sm font-bold uppercase tracking-wider text-white/80">
             {field.label}
           </label>
           <input
             id={field.name}
             type={field.type ?? "text"}
-            className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-navyBlue focus:ring-2 focus:ring-navyBlue/20"
+            className="w-full rounded-md border border-white/20 bg-background px-4 py-3 text-sm text-white outline-none transition focus:border-saffron focus:ring-1 focus:ring-saffron/50"
             {...register(field.name)}
           />
           {errors[field.name] ? <p className="mt-1 text-xs text-red-600">{errors[field.name]?.message}</p> : null}
@@ -74,13 +74,13 @@ export function ContactForm() {
       ))}
 
       <div>
-        <label htmlFor="message" className="mb-1 block text-sm font-medium text-slate-800">
+        <label htmlFor="message" className="mb-1 block text-sm font-bold uppercase tracking-wider text-white/80">
           Message
         </label>
         <textarea
           id="message"
           rows={5}
-          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-navyBlue focus:ring-2 focus:ring-navyBlue/20"
+          className="w-full rounded-md border border-white/20 bg-background px-4 py-3 text-sm text-white outline-none transition focus:border-saffron focus:ring-1 focus:ring-saffron/50"
           {...register("message")}
         />
         {errors.message ? <p className="mt-1 text-xs text-red-600">{errors.message.message}</p> : null}
@@ -89,12 +89,12 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="rounded-full bg-gradient-to-r from-navyBlue to-indiaGreen px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
+        className="inline-flex w-full items-center justify-center whitespace-nowrap rounded-md bg-saffron px-6 py-4 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-saffron-highlight disabled:pointer-events-none disabled:opacity-50"
       >
         {isSubmitting ? "Submitting..." : "Request Strategy Consultation"}
       </button>
 
-      {serverMessage ? <p className="text-sm text-slate-700">{serverMessage}</p> : null}
+      {serverMessage ? <p className="text-sm text-white/70">{serverMessage}</p> : null}
     </form>
   );
 }

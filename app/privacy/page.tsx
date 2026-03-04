@@ -18,23 +18,23 @@ export default function PrivacyPage() {
       />
 
       <section className="section-shell mt-16 space-y-4">
-        <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-premium">
-          <h2 className="text-lg font-semibold text-slate-900">Data Confidentiality</h2>
-          <p className="mt-2 text-sm text-slate-600">
+        <article className="rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 shadow-[var(--shadow-card)]">
+          <h2 className="text-lg font-heading font-bold text-[var(--text-primary)]">Data Confidentiality</h2>
+          <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
             Client strategy data, field intelligence and communication plans are treated as confidential and are accessed only on a need-to-know basis.
           </p>
         </article>
 
-        <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-premium">
-          <h2 className="text-lg font-semibold text-slate-900">Secure Storage</h2>
-          <p className="mt-2 text-sm text-slate-600">
+        <article className="rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 shadow-[var(--shadow-card)]">
+          <h2 className="text-lg font-heading font-bold text-[var(--text-primary)]">Secure Storage</h2>
+          <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
             Engagement records are stored in secured systems with layered controls to prevent unauthorized access, disclosure or data leakage.
           </p>
         </article>
 
-        <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-premium">
-          <h2 className="text-lg font-semibold text-slate-900">Non-Disclosure Commitment</h2>
-          <p className="mt-2 text-sm text-slate-600">
+        <article className="rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 shadow-[var(--shadow-card)]">
+          <h2 className="text-lg font-heading font-bold text-[var(--text-primary)]">Non-Disclosure Commitment</h2>
+          <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
             We maintain strict non-disclosure practices for campaign plans, candidate communication and strategic advisory work unless disclosure is legally required.
           </p>
         </article>

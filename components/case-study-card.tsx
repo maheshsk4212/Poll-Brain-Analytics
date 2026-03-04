@@ -10,22 +10,22 @@ type CaseStudyCardProps = {
 
 export function CaseStudyCard({ title, challenge, approach, outcome, image }: CaseStudyCardProps) {
   return (
-    <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-premium">
+    <article className="group overflow-hidden rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-saffron/40">
       <Image src={image} alt={title} width={1600} height={900} className="h-56 w-full object-cover" />
       <div className="p-6">
-        <h3 className="text-xl font-semibold text-slate-900">{title}</h3>
+        <h3 className="text-xl font-heading font-bold uppercase tracking-tight text-[var(--text-primary)]">{title}</h3>
         <dl className="mt-4 space-y-3 text-sm">
           <div>
-            <dt className="font-medium text-slate-900">Challenge</dt>
-            <dd className="text-slate-600">{challenge}</dd>
+            <dt className="font-bold uppercase tracking-wider text-xs text-saffron">Challenge</dt>
+            <dd className="mt-1 text-[var(--text-secondary)]">{challenge}</dd>
           </div>
           <div>
-            <dt className="font-medium text-slate-900">Approach</dt>
-            <dd className="text-slate-600">{approach}</dd>
+            <dt className="font-bold uppercase tracking-wider text-xs text-saffron">Approach</dt>
+            <dd className="mt-1 text-[var(--text-secondary)]">{approach}</dd>
           </div>
           <div>
-            <dt className="font-medium text-slate-900">Outcome</dt>
-            <dd className="text-slate-600">{outcome}</dd>
+            <dt className="font-bold uppercase tracking-wider text-xs text-saffron">Outcome</dt>
+            <dd className="mt-1 text-[var(--text-secondary)]">{outcome}</dd>
           </div>
         </dl>
       </div>

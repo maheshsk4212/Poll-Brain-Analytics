@@ -6,6 +6,7 @@ import { ServiceCard } from "@/components/service-card/service-card";
 import { ProcessFlow } from "@/components/process-flow/process-flow";
 import { CtaSection } from "@/components/cta-section/cta-section";
 import { ImagePanel } from "@/components/common/image-panel";
+import { StatsInfographic } from "@/components/common/stats-infographic";
 import { homeCoreServices, processSteps, whyChooseUs } from "@/lib/constants";
 import { siteConfig } from "@/config/site";
 
@@ -32,64 +33,46 @@ export default function HomePage() {
       <section className="section-shell mt-20">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-premium sm:p-10">
+            <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-surface p-8 shadow-2xl sm:p-10">
               <div
-                className="absolute inset-0 bg-[radial-gradient(circle_at_92%_12%,rgba(255,153,51,0.22),transparent_34%),radial-gradient(circle_at_8%_88%,rgba(19,136,8,0.14),transparent_38%)]"
+                className="absolute inset-0 bg-[radial-gradient(circle_at_92%_12%,rgba(255,106,0,0.1),transparent_34%),radial-gradient(circle_at_8%_88%,rgba(19,136,8,0.05),transparent_38%)]"
                 aria-hidden="true"
               />
               <SectionHeading
                 eyebrow="What We Do"
-                title="We Engineer Electoral Success."
-                description="We partner with political leaders, candidates and parties to design and execute data-driven, ground-integrated campaigns that deliver measurable results. Our approach combines research precision, strategic clarity, narrative control and disciplined execution."
+                title="WE ENGINEER ELECTORAL SUCCESS"
+                description="We partner with political leaders, candidates, and parties to design and execute data-driven, ground-integrated campaigns that deliver measurable results. Our approach combines research precision, strategic clarity, narrative control, and disciplined execution."
+                tone="light"
               />
-              <div className="mt-8 grid gap-3 text-sm text-slate-700 sm:grid-cols-3">
-                <div className="rounded-xl border border-slate-200 bg-white px-3 py-3 shadow-sm">
-                  <p className="text-xs uppercase tracking-[0.15em] text-navyBlue">01</p>
-                  <p className="mt-1 font-medium">Research Precision</p>
+              <div className="mt-8 grid gap-3 text-sm text-white/80 sm:grid-cols-3">
+                <div className="rounded-xl border border-white/10 bg-white/5 px-3 py-3 backdrop-blur-sm">
+                  <p className="text-xs uppercase tracking-[0.15em] text-saffron font-bold">01</p>
+                  <p className="mt-1 font-medium text-white">Research Precision</p>
                 </div>
-                <div className="rounded-xl border border-slate-200 bg-white px-3 py-3 shadow-sm">
-                  <p className="text-xs uppercase tracking-[0.15em] text-navyBlue">02</p>
-                  <p className="mt-1 font-medium">Narrative Control</p>
+                <div className="rounded-xl border border-white/10 bg-white/5 px-3 py-3 backdrop-blur-sm">
+                  <p className="text-xs uppercase tracking-[0.15em] text-saffron font-bold">02</p>
+                  <p className="mt-1 font-medium text-white">Narrative Control</p>
                 </div>
-                <div className="rounded-xl border border-slate-200 bg-white px-3 py-3 shadow-sm">
-                  <p className="text-xs uppercase tracking-[0.15em] text-navyBlue">03</p>
-                  <p className="mt-1 font-medium">Execution Discipline</p>
+                <div className="rounded-xl border border-white/10 bg-white/5 px-3 py-3 backdrop-blur-sm">
+                  <p className="text-xs uppercase tracking-[0.15em] text-saffron font-bold">03</p>
+                  <p className="mt-1 font-medium text-white">Execution Discipline</p>
                 </div>
               </div>
-              <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
-                <span className="font-semibold text-slate-900">Strategic Edge:</span> One integrated command structure
+              <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70 backdrop-blur-md">
+                <span className="font-bold text-white uppercase tracking-wider">Strategic Edge:</span> One integrated command structure
                 across research, field operations, digital and media response.
               </div>
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="grid gap-4 sm:grid-cols-[1fr_0.9fr]">
-              <ImagePanel
-                src="/images/parliament.jpg"
-                alt="Indian Parliament architecture"
-                className="h-[320px] sm:h-[360px]"
-              />
-              <div className="space-y-4">
-                <ImagePanel
-                  src="/images/field-outreach.jpg"
-                  alt="Field outreach with Indian flag"
-                  className="h-[172px]"
-                />
-                <div className="rounded-2xl border border-slate-200 bg-gradient-to-r from-navyBlue to-[#2336a0] p-4 text-white shadow-premium">
-                  <p className="text-xs uppercase tracking-[0.2em] text-slate-200">Campaign Positioning</p>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-100">
-                    Premium strategic consulting for campaigns that demand confidentiality, speed and constituency-level precision.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <StatsInfographic />
           </Reveal>
         </div>
       </section>
 
       <section className="section-shell mt-24">
-        <SectionHeading eyebrow="Core Services" title="Integrated Capabilities for Campaign Victory" />
+        <SectionHeading eyebrow="Core Services" title="Capabilities for Victory" tone="light" />
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {homeCoreServices.map((service, index) => (
             <Reveal key={service.title} delay={index * 0.06}>
@@ -100,20 +83,20 @@ export default function HomePage() {
       </section>
 
       <section className="section-shell mt-24">
-        <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-950 px-6 py-10 sm:px-8 sm:py-12">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(255,153,51,0.32),transparent_34%),radial-gradient(circle_at_88%_80%,rgba(19,136,8,0.28),transparent_34%)]" />
+        <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-surface px-6 py-10 sm:px-8 sm:py-12 shadow-2xl">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(255,106,0,0.15),transparent_34%),radial-gradient(circle_at_88%_80%,rgba(10,61,145,0.15),transparent_34%)]" />
           <div className="relative grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr]">
             <ImagePanel
               src="/images/media-room.jpg"
               alt="Media production for campaign narrative"
-              className="h-[320px] border-white/20"
+              className="h-[320px] border-white/10"
             />
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-300">Campaign War Room</p>
-              <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">
-                Strategic Political Consulting | Data Intelligence | Ground Operations | Media and Narrative Management | Social Media
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-saffron">Campaign War Room</p>
+              <h2 className="mt-3 text-3xl font-heading font-black tracking-tighter uppercase text-white sm:text-4xl">
+                Strategic Political Consulting | Data Intelligence | Ground Operations | Media & Narrative Management | Social Media
               </h2>
-              <p className="mt-4 max-w-2xl text-sm text-slate-200">
+              <p className="mt-4 max-w-2xl text-sm md:text-base text-white/70 leading-relaxed">
                 Every layer is integrated into one command structure so your messaging, field movement and digital response stay synchronized.
               </p>
             </div>
@@ -122,22 +105,19 @@ export default function HomePage() {
       </section>
 
       <section className="section-shell mt-24">
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-slate-800 bg-slate-950 px-6 py-16 shadow-2xl sm:px-12 sm:py-20">
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-background px-6 py-16 shadow-2xl sm:px-12 sm:py-20">
           <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage: `radial-gradient(circle at 20% 30%, rgba(255, 153, 51, 0.4), transparent 40%), radial-gradient(circle at 80% 70%, rgba(19, 136, 8, 0.3), transparent 40%)`
-            }}
+            className="absolute inset-0 opacity-20 bg-hero-glow"
             aria-hidden="true"
           />
 
           <div className="relative z-10">
             <div className="flex flex-col items-center text-center">
-              <span className="inline-block rounded-full bg-slate-800/50 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-saffron">
+              <span className="inline-block rounded-sm bg-surface px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-saffron ring-1 ring-white/10">
                 Why Choose Us
               </span>
-              <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-5xl">
-                Built for High-Stakes <span className="text-indiaGreen">Electoral Environments</span>
+              <h2 className="mt-6 text-4xl font-heading font-black uppercase tracking-tighter text-white sm:text-5xl">
+                Built for High-Stakes <span className="text-transparent bg-clip-text bg-tricolor-gradient">Electoral Environments</span>
               </h2>
             </div>
 
@@ -163,14 +143,14 @@ export default function HomePage() {
 
                 return (
                   <Reveal key={item.title} delay={index * 0.1}>
-                    <div className="group relative h-full rounded-2xl border border-white/10 bg-white/5 p-8 transition-all hover:bg-white/10 hover:shadow-[0_0_30px_-10px_rgba(255,153,51,0.3)]">
-                      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 shadow-lg transition-transform group-hover:scale-110">
+                    <div className="group relative h-full rounded-2xl border border-white/5 bg-surface/50 p-8 transition-all duration-300 hover:bg-white/5 hover:shadow-[0_0_30px_-10px_rgba(255,106,0,0.2)] hover:border-saffron/30">
+                      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-background shadow-[0_4px_20px_rgba(0,0,0,0.5)] ring-1 ring-white/5 transition-transform group-hover:scale-110 group-hover:ring-saffron/50">
                         {IconComponent && <IconComponent className="h-7 w-7 text-saffron" />}
                       </div>
-                      <h3 className="mb-3 text-xl font-bold text-white transition-colors group-hover:text-saffron">
+                      <h3 className="mb-3 text-xl font-heading font-bold uppercase tracking-tight text-white transition-colors group-hover:text-saffron">
                         {item.title}
                       </h3>
-                      <p className="text-balance text-sm leading-relaxed text-slate-400">
+                      <p className="text-balance text-sm leading-relaxed text-white/70">
                         {item.description}
                       </p>
                     </div>
@@ -179,9 +159,10 @@ export default function HomePage() {
               })}
             </div>
 
-            <div className="mt-20 flex flex-col items-center border-t border-white/10 pt-10 text-center">
-              <p className="max-w-2xl text-2xl font-bold italic tracking-tight text-white sm:text-3xl">
-                &ldquo;We do not run campaigns. We design political victories.&rdquo;
+            <div className="mt-20 flex flex-col items-center border-t border-white/5 pt-10 text-center">
+              <p className="max-w-3xl text-3xl font-heading font-black uppercase tracking-tighter text-white sm:text-4xl md:text-5xl drop-shadow-lg">
+                WE DON&apos;T RUN CAMPAIGNS.<br />
+                <span className="text-transparent bg-clip-text bg-saffron-highlight">WE DESIGN POLITICAL VICTORIES.</span>
               </p>
               <div className="mt-4 flex h-1.5 w-24 gap-1">
                 <div className="h-full w-1/3 rounded-full bg-saffron" />
@@ -194,21 +175,21 @@ export default function HomePage() {
       </section>
 
       <section className="section-shell mt-24">
-        <SectionHeading eyebrow="Our Process" title="Research to Victory" />
+        <SectionHeading eyebrow="Our Process" title="Research to Victory" tone="light" />
         <ProcessFlow steps={processSteps} />
       </section>
 
       <section className="section-shell mt-24">
-        <div className="relative overflow-hidden rounded-3xl border border-slate-200">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
           <ImagePanel
-            src="/images/india-flag-street.jpg"
-            alt="Indian city street with national flag"
-            className="h-[280px] rounded-none border-0"
+            src="/images/campaign-outreach.png"
+            alt="Grassroots campaign outreach: handing over a flyer and national flag"
+            className="h-[320px] rounded-none border-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
           <div className="absolute inset-0 flex items-center">
-            <div className="px-6 sm:px-10">
-              <p className="max-w-xl text-2xl font-semibold leading-tight text-white sm:text-3xl">
+            <div className="px-6 sm:px-12 max-w-2xl">
+              <p className="text-2xl font-heading font-bold uppercase tracking-tight leading-tight text-white sm:text-4xl drop-shadow-md">
                 High-trust political advisory built for campaigns where message discipline and timing define outcomes.
               </p>
             </div>
@@ -217,8 +198,8 @@ export default function HomePage() {
       </section>
 
       <CtaSection
-        title="Ready to Build a Winning Campaign?"
-        description="Let us create a strategy architecture that drives measurable electoral outcomes."
+        title="READY TO BUILD A\nWINNING CAMPAIGN?"
+        description="Let's create a strategy that delivers results."
         buttonLabel="Request Strategy Consultation"
       />
 

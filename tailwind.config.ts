@@ -9,18 +9,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        saffron: "#FF9933",
-        indiaGreen: "#138808",
-        navyBlue: "#1A237E",
-        ink: "#111827",
-        soft: "#f4f6fb"
+        saffron: {
+          DEFAULT: "var(--saffron)",
+          highlight: "var(--saffron-highlight)"
+        },
+        indiaGreen: "var(--india-green)",
+        strategicBlue: "var(--strategic-blue)",
+        background: {
+          DEFAULT: "var(--background)",
+          surface: "var(--surface)",
+          surface2: "var(--surface-2)"
+        },
+        border: {
+          subtle: "var(--border-color)",
+          subtle2: "var(--border-color-2)"
+        },
+        card: {
+          bg: "var(--card-bg)",
+          border: "var(--card-border)"
+        },
+        theme: {
+          text: "var(--text-primary)",
+          secondary: "var(--text-secondary)",
+          muted: "var(--text-muted)"
+        }
       },
-      boxShadow: {
-        premium: "0 20px 55px -30px rgba(13, 24, 64, 0.45)"
+      fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-montserrat)", "sans-serif"]
       },
       backgroundImage: {
-        "flag-gradient": "linear-gradient(135deg, rgba(255,153,51,0.14) 0%, rgba(255,255,255,0.96) 40%, rgba(19,136,8,0.16) 100%)",
-        "navy-glow": "radial-gradient(circle at 80% 20%, rgba(26,35,126,0.30), transparent 48%)"
+        "tricolor-gradient": "linear-gradient(90deg, #FF6A00, #FFFFFF, #138808)",
+        "saffron-highlight": "linear-gradient(90deg, #FF6A00, #FF8C42)",
+        "hero-glow": "radial-gradient(circle at 80% 20%, rgba(10, 61, 145, 0.30), transparent 48%)"
       }
     }
   },

@@ -2,14 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --saffron: #ff9933;
-  --white: #ffffff;
+/* ============================================================
+   THEME: DARK (default)
+   ============================================================ */
+:root,
+[data-theme="dark"] {
+  --background: #0F172A;
+  --surface: #111827;
+  --surface-2: #1a2437;
+  --saffron: #FF6A00;
+  --saffron-highlight: #FF8C42;
   --india-green: #138808;
-  --navy-blue: #1a237e;
-  --ink: #0f172a;
-  --muted: #64748b;
-  --surface: #f8fafc;
+  --strategic-blue: #0A3D91;
+  --border-color: #1F2937;
+  --border-color-2: rgba(255, 255, 255, 0.08);
+  --white: #ffffff;
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --text-muted: rgba(255, 255, 255, 0.40);
+  --card-bg: #111827;
+  --card-border: #1F2937;
+  --input-bg: #0F172A;
+  --input-border: rgba(255, 255, 255, 0.15);
+  --nav-bg: rgba(15, 23, 42, 0.80);
+  --nav-border: rgba(255, 255, 255, 0.05);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   THEME: LIGHT
+   ============================================================ */
+[data-theme="light"] {
+  --background: #F5F7FA;
+  --surface: #FFFFFF;
+  --surface-2: #EEF1F5;
+  --saffron: #E55C00;
+  --saffron-highlight: #D45000;
+  --india-green: #0E6606;
+  --strategic-blue: #0A3D91;
+  --border-color: #E2E8F0;
+  --border-color-2: rgba(0, 0, 0, 0.08);
+  --white: #0F172A;
+  --text-primary: #0F172A;
+  --text-secondary: #374151;
+  --text-muted: #6B7280;
+  --card-bg: #FFFFFF;
+  --card-border: #E2E8F0;
+  --input-bg: #FFFFFF;
+  --input-border: #CBD5E1;
+  --nav-bg: rgba(255, 255, 255, 0.90);
+  --nav-border: rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -23,12 +66,11 @@ body {
 }
 
 body {
-  color: var(--ink);
-  background:
-    radial-gradient(circle at 8% 10%, rgba(255, 153, 51, 0.14), transparent 40%),
-    radial-gradient(circle at 92% 7%, rgba(26, 35, 126, 0.14), transparent 38%),
-    radial-gradient(circle at 72% 92%, rgba(19, 136, 8, 0.1), transparent 36%),
-    linear-gradient(180deg, #ffffff, #f8fafc);
+  color: var(--text-primary);
+  background-color: var(--background);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1,
@@ -49,9 +91,7 @@ a {
   @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
 }
 
-.panel {
-  @apply rounded-2xl border border-slate-200/70 bg-white/90 shadow-premium backdrop-blur;
-}
+
 
 .grid-pattern {
   background-image:
@@ -65,10 +105,12 @@ a {
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-7px);
   }
@@ -76,4 +118,221 @@ a {
 
 .animate-float {
   animation: float 3.2s ease-in-out infinite;
+}
+
+/* ============================================================
+   LIGHT THEME GLOBAL OVERRIDES
+   Fixes all hardcoded dark-mode Tailwind classes site-wide
+   ============================================================ */
+
+/* Smooth transitions for all theme-affected properties */
+[data-theme="light"] *,
+[data-theme="light"] *::before,
+[data-theme="light"] *::after {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
+/* Remove this aggressive override - it breaks accessibility on dark image overlays */
+/* [data-theme="light"] [class*="text-white"] {
+  color: var(--text-primary) !important;
+} */
+
+/* BACKGROUNDS: dark surface → light card */
+[data-theme="light"] [class*="bg-surface"] {
+  background-color: var(--surface) !important;
+}
+
+[data-theme="light"] [class*="bg-background"] {
+  background-color: var(--background) !important;
+}
+
+/* Translucent white overlays (bg-white/5, bg-white/10, etc.) → subtle light tint */
+[data-theme="light"] [class*="bg-white\/"] {
+  background-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Translucent black overlays → light equivalents */
+[data-theme="light"] [class*="bg-black\/"] {
+  background-color: rgba(15, 23, 42, 0.03) !important;
+}
+
+/* BORDERS: white/x → subtle dark border */
+[data-theme="light"] [class*="border-white\/"] {
+  border-color: var(--border-color) !important;
+}
+
+/* Backdrop blur panels → white background */
+[data-theme="light"] [class*="backdrop-blur"] {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Radial gradient dark overlays: make subtle */
+[data-theme="light"] .bg-\[radial-gradient\(circle_at_80\%_50\%\,rgba\(10\,61\,145\,0\.15\)\,transparent_60\%\)\],
+[data-theme="light"] .bg-\[radial-gradient\(circle_at_20\%_80\%\,rgba\(255\,106\,0\,0\.05\)\,transparent_50\%\)\] {
+  opacity: 0.4;
+}
+
+/* Hero section: keep heading text readable */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6 {
+  color: var(--text-primary);
+}
+
+/* Paragraph/description text */
+[data-theme="light"] p {
+  color: var(--text-secondary);
+}
+
+/* Section panels: use card background in light mode */
+[data-theme="light"] [class*="bg-gradient-to-br"] {
+  background-image: none !important;
+  background-color: var(--surface) !important;
+}
+
+/* Keep saffron buttons as-is */
+[data-theme="light"] [class*="bg-saffron"] {
+  background-color: var(--saffron) !important;
+}
+
+[data-theme="light"] [class*="bg-saffron"],
+[data-theme="light"] [class*="bg-saffron"] *,
+[data-theme="light"] .consultation-btn {
+  color: #ffffff !important;
+}
+
+/* Tricolor gradient text clips should stay vibrant */
+[data-theme="light"] [class*="bg-clip-text"] {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90deg, #E55C00, #0F172A, #0E6606) !important;
+}
+
+/* Saffron border accents stay vibrant */
+[data-theme="light"] [class*="border-saffron"] {
+  border-color: var(--saffron) !important;
+}
+
+/* Section separators with white border → subtle dark */
+[data-theme="light"] [class*="border-t"],
+[data-theme="light"] [class*="border-b"] {
+  border-color: var(--border-color) !important;
+}
+
+/* Ring utilities */
+[data-theme="light"] [class*="ring-white\/"] {
+  --tw-ring-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Placeholder text in inputs */
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Input fields */
+[data-theme="light"] input,
+[data-theme="light"] textarea {
+  background-color: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Shimmer sweep */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 106, 0, 0.3) 50%, transparent 100%);
+  background-size: 200% auto;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* Data pulse dot */
+@keyframes data-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+.animate-data-pulse {
+  animation: data-pulse 1.8s ease-in-out infinite;
+}
+
+/* Gradient color shift */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* Glow pulse ring */
+@keyframes glow-ring {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 106, 0, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 106, 0, 0);
+  }
+}
+
+.animate-glow-ring {
+  animation: glow-ring 2s ease-in-out infinite;
+}
+
+/* Scan line */
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
 }

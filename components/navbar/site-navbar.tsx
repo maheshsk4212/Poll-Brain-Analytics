@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navItems } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export function SiteNavbar() {
   const pathname = usePathname();
@@ -19,27 +20,23 @@ export function SiteNavbar() {
   }, []);
 
   const isHomePage = pathname === "/";
-  // Always use solid styling for premium legibility and consistency, 
-  // as the transparent-to-solid transition was causing visibility issues on light hero slides.
-  const isSolid = true;
+  // The navbar uses a glass effect upon scroll
+  const isSolid = scrolled || !isHomePage;
 
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition duration-300",
-        isSolid ? "bg-white/80 shadow-sm backdrop-blur-xl" : "bg-transparent"
+        isSolid ? "bg-[var(--nav-bg)] shadow-md backdrop-blur-xl border-b border-[var(--nav-border)]" : "bg-transparent"
       )}
     >
-      <nav className="section-shell flex h-20 items-center justify-between" aria-label="Main navigation">
+      <nav className="section-shell flex h-24 items-center justify-between" aria-label="Main navigation">
         <Link
           href="/"
           className="group inline-flex items-center gap-2 px-1 py-2"
         >
-          <span className="inline-block h-8 w-1.5 rounded-full bg-saffron shadow-[0_0_12px_rgba(245,158,11,0.6)]" aria-hidden="true" />
-          <span className={cn(
-            "text-xl font-bold tracking-tight transition-colors duration-300",
-            isSolid ? "text-slate-900" : "text-white drop-shadow-md"
-          )}>
+          <span className="inline-block h-8 w-1.5 rounded-sm bg-saffron shadow-[0_0_12px_rgba(255,106,0,0.6)]" aria-hidden="true" />
+          <span className="text-xl font-bold font-heading tracking-tight text-white uppercase transition-colors duration-300">
             Poll Brain <span className="text-saffron">Analytics</span>
           </span>
         </Link>
@@ -47,7 +44,7 @@ export function SiteNavbar() {
         <button
           type="button"
           onClick={() => setOpen((prev) => !prev)}
-          className="rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm lg:hidden"
+          className="rounded-md border border-white/10 bg-surface px-3 py-2 text-sm text-white shadow-sm lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
         >
@@ -55,10 +52,10 @@ export function SiteNavbar() {
         </button>
 
         <div className={cn(
-          "hidden items-center gap-1 rounded-full border p-1.5 transition-all duration-300 lg:flex",
+          "hidden items-center gap-1 rounded-sm border p-1.5 transition-all duration-300 lg:flex",
           isSolid
-            ? "border-slate-200 bg-white/50 shadow-sm backdrop-blur-md"
-            : "border-white/20 bg-white/10 shadow-xl backdrop-blur-xl"
+            ? "border-white/10 bg-surface/50 shadow-sm backdrop-blur-md"
+            : "border-white/20 bg-black/10 shadow-xl backdrop-blur-xl"
         )}>
           {navItems.map((item) => {
             const isActive = pathname === item.href;
@@ -67,13 +64,10 @@ export function SiteNavbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-full px-4 py-2 text-sm font-bold transition-all duration-300",
+                  "rounded-sm px-4 py-2 text-sm font-bold uppercase tracking-wider transition-all duration-300",
                   isActive
-                    ? (isSolid ? "bg-slate-900 text-white" : "bg-white text-slate-900 shadow-lg")
-                    : (isSolid
-                      ? "text-slate-600 hover:bg-slate-900/5 hover:text-slate-900"
-                      : "text-white/90 hover:bg-white/20 hover:text-white"
-                    )
+                    ? "bg-[var(--text-primary)] text-[var(--background)] shadow-lg"
+                    : "text-[var(--text-secondary)] hover:bg-[var(--surface-2)] hover:text-[var(--text-primary)]"
                 )}
               >
                 {item.label}
@@ -82,15 +76,16 @@ export function SiteNavbar() {
           })}
           <Link
             href="/contact"
-            className="ml-2 rounded-full bg-saffron px-5 py-2 text-sm font-bold text-white shadow-lg transition-all duration-300 hover:bg-[#f08a1d] hover:shadow-saffron/20 active:scale-95"
+            className="ml-2 rounded-sm bg-saffron px-5 py-2 text-sm font-bold uppercase tracking-wider text-white shadow-lg transition-all duration-300 hover:bg-saffron-highlight hover:shadow-saffron/20 active:scale-95"
           >
-            Schedule Consultation
+            Consultation
           </Link>
+          <ThemeToggle />
         </div>
       </nav>
 
       <div id="mobile-menu" className={cn(
-        "absolute inset-x-0 top-full overflow-hidden border-t border-slate-200 bg-white shadow-2xl transition-all duration-300 ease-in-out lg:hidden",
+        "absolute inset-x-0 top-full overflow-hidden border-t border-border-subtle bg-background shadow-2xl transition-all duration-300 ease-in-out lg:hidden",
         open ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
       )}>
         <div className="section-shell flex flex-col gap-2 py-6">
@@ -100,10 +95,10 @@ export function SiteNavbar() {
               href={item.href}
               onClick={() => setOpen(false)}
               className={cn(
-                "rounded-xl px-4 py-3 text-base capitalize transition-all duration-200",
+                "rounded-sm px-4 py-3 text-base uppercase tracking-wider font-bold transition-all duration-200",
                 pathname === item.href
-                  ? "bg-slate-900 font-bold text-white"
-                  : "font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                  ? "bg-[var(--text-primary)] text-[var(--background)] shadow-lg"
+                  : "text-[var(--text-secondary)] hover:bg-[var(--surface-2)] hover:text-[var(--text-primary)]"
               )}
             >
               {item.label}
@@ -112,9 +107,9 @@ export function SiteNavbar() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-4 rounded-xl bg-saffron px-4 py-4 text-center text-base font-bold text-slate-950 shadow-lg shadow-saffron/20 transition-all active:scale-95"
+            className="mt-4 rounded-sm bg-saffron px-4 py-4 text-center text-base font-bold uppercase tracking-wider text-white shadow-lg transition-all active:scale-95"
           >
-            Schedule Consultation
+            Consultation
           </Link>
         </div>
       </div>

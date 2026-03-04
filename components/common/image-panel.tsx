@@ -10,7 +10,7 @@ type ImagePanelProps = {
 
 export function ImagePanel({ src, alt, className, overlay = true }: ImagePanelProps) {
   return (
-    <div className={cn("relative overflow-hidden rounded-3xl border border-slate-200 shadow-premium", className)}>
+    <div className={cn("relative overflow-hidden rounded-3xl border border-[var(--card-border)] shadow-[var(--shadow-card)]", className)}>
       <Image src={src} alt={alt} width={1600} height={1000} className="h-full w-full object-cover" />
       {overlay ? <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" /> : null}
     </div>

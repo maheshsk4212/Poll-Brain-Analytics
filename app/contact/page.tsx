@@ -26,23 +26,23 @@ export default function ContactPage() {
           <ContactForm />
 
           <aside className="space-y-4">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-premium">
-              <h3 className="text-xl font-semibold text-slate-900">Direct Contact</h3>
-              <ul className="mt-4 space-y-3 text-sm text-slate-700">
+            <div className="rounded-2xl border border-white/10 bg-surface p-6 shadow-2xl">
+              <h3 className="text-xl font-heading font-black tracking-tight text-white uppercase">Direct Contact</h3>
+              <ul className="mt-4 space-y-3 text-sm text-white/70">
                 <li>
-                  <span className="font-semibold text-slate-900">Email:</span> {siteConfig.email}
+                  <span className="font-bold text-white uppercase tracking-wider text-xs">Email:</span> {siteConfig.email}
                 </li>
                 <li>
-                  <span className="font-semibold text-slate-900">Phone:</span> {siteConfig.phone}
+                  <span className="font-bold text-white uppercase tracking-wider text-xs">Phone:</span> {siteConfig.phone}
                 </li>
                 <li>
-                  <span className="font-semibold text-slate-900">Office:</span> {siteConfig.office}
+                  <span className="font-bold text-white uppercase tracking-wider text-xs">Office:</span> {siteConfig.office}
                 </li>
               </ul>
 
-              <div className="mt-7 rounded-xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-900">Privacy & Confidentiality Statement</p>
-                <p className="mt-2 text-sm text-slate-600">
+              <div className="mt-7 rounded-xl border border-white/5 bg-background p-4">
+                <p className="text-sm font-bold uppercase tracking-wider text-white">Privacy & Confidentiality</p>
+                <p className="mt-2 text-sm text-white/60">
                   All consultations and client engagements are handled with strict confidentiality standards, controlled access and data security compliance.
                 </p>
               </div>

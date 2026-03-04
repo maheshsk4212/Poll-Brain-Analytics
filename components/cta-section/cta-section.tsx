@@ -1,4 +1,5 @@
-import { ButtonLink } from "@/components/common/button-link";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -19,18 +20,21 @@ export function CtaSection({
 }: CtaSectionProps) {
   return (
     <section className={cn("section-shell mt-20", className)}>
-      <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-navyBlue px-6 py-12 text-white shadow-premium sm:px-10 sm:py-14">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(255,153,51,0.4),transparent_34%),radial-gradient(circle_at_90%_85%,rgba(19,136,8,0.25),transparent_32%)]" />
-        <div className="absolute inset-0 opacity-20 mix-blend-screen">
+      <div className="relative overflow-hidden rounded-3xl border border-saffron/20 bg-slate-950 px-6 py-12 text-white shadow-2xl sm:px-10 sm:py-14">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(255,106,0,0.2),transparent_40%),radial-gradient(circle_at_90%_85%,rgba(10,61,145,0.2),transparent_40%)]" />
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay">
           <Image src="/images/hyderabad-charminar.jpg" alt="" fill className="object-cover" />
         </div>
-        <div className="relative">
-          <h2 className="text-2xl font-bold sm:text-4xl md:text-5xl">{title}</h2>
-          <p className="mt-4 max-w-2xl text-slate-200">{description}</p>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10">
+          <h2 className="text-3xl font-heading font-black tracking-tighter uppercase sm:text-5xl md:text-6xl text-white drop-shadow-md">
+            {title.split('\n').map((line, i) => <span key={i} className="block">{line}</span>)}
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg text-white/90 drop-shadow-sm">{description}</p>
           <div className="mt-8">
-            <ButtonLink href={buttonHref} className="bg-saffron text-slate-950 hover:bg-[#f0891d] focus-visible:ring-saffron">
-              {buttonLabel}
-            </ButtonLink>
+            <Link href={buttonHref}>
+              <Button size="lg">{buttonLabel}</Button>
+            </Link>
           </div>
         </div>
       </div>

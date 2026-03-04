@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-20 overflow-hidden border-t border-white/15 bg-slate-950 text-white">
+    <footer className="mt-20 overflow-hidden border-t border-border-subtle bg-background text-white">
       <div className="relative">
         <Image
           src="/images/hyderabad-night.jpg"
@@ -14,7 +14,7 @@ export function SiteFooter() {
           height={900}
           className="absolute inset-0 h-full w-full object-cover opacity-25"
         />
-        <div className="absolute inset-0 bg-slate-950/90" />
+        <div className="absolute inset-0 bg-background/90" />
 
         <div className="section-shell relative grid gap-12 py-16 md:grid-cols-[1.5fr_1fr_1fr] md:py-20">
           <div>
