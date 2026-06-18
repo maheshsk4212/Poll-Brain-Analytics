@@ -45,6 +45,7 @@ export function SiteNavbar() {
             height={48}
             className="h-12 w-auto object-contain transition-all duration-300"
             priority
+            unoptimized
           />
         </Link>
 
