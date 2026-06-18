@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import { PageBanner } from "@/components/common/page-banner";
 import { SectionHeading } from "@/components/common/section-heading";
 import { InsightsGrid } from "@/components/insights-grid";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Insights",
   description:
-    "Research-backed perspectives on elections, political communication, campaign management and voter behavior."
+    "Research-backed perspectives on elections, political communication, campaign management and voter behavior.",
+  alternates: {
+    canonical: `${siteConfig.domain}/insights`
+  }
 };
 
 export default function InsightsPage() {

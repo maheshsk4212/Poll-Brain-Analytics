@@ -4,11 +4,15 @@ import { SectionHeading } from "@/components/common/section-heading";
 import { ServiceAccordion } from "@/components/service-card/service-accordion";
 import { ImagePanel } from "@/components/common/image-panel";
 import { servicesDetailed } from "@/lib/constants";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Explore Poll Brain Analytics services across election strategy, political data analytics, ground operations, media narrative and election-day management."
+    "Explore Poll Brain Digital's services across election strategy, political data analytics, ground operations, media narrative and election-day management.",
+  alternates: {
+    canonical: `${siteConfig.domain}/services`
+  }
 };
 
 export default function ServicesPage() {

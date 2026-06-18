@@ -25,6 +25,19 @@ const MAX_REQUESTS = 5;
 function isRateLimited(ip: string) {
   const now = Date.now();
   const windowStart = now - WINDOW_MS;
+
+  // Prune map if it gets too large (prevent memory leak)
+  if (ipHits.size > 1000) {
+    for (const [key, stamps] of ipHits.entries()) {
+      const recent = stamps.filter((stamp) => stamp > windowStart);
+      if (recent.length === 0) {
+        ipHits.delete(key);
+      } else {
+        ipHits.set(key, recent);
+      }
+    }
+  }
+
   const previous = ipHits.get(ip) ?? [];
   const recent = previous.filter((stamp) => stamp > windowStart);
 
@@ -41,7 +54,7 @@ function isRateLimited(ip: string) {
 function buildEmail(data: ContactPayload) {
   const to = process.env.CONTACT_TO_EMAIL ?? "contact@pollbrainanalytics.com";
   const from =
-    process.env.CONTACT_FROM_EMAIL ?? "Poll Brain Analytics <noreply@pollbrainanalytics.com>";
+    process.env.CONTACT_FROM_EMAIL ?? "Poll Brain Digital <noreply@pollbrainanalytics.com>";
   const subject = `New consultation request: ${data.name}`;
 
   const text = [

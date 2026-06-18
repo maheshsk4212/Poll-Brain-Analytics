@@ -8,7 +8,7 @@ import { Shield, TrendingUp } from "lucide-react";
 
 export function HomeHero() {
   return (
-    <section className="relative isolate min-h-screen pb-16 overflow-hidden bg-background">
+    <section className="relative isolate min-h-screen pb-16 overflow-hidden bg-background" aria-labelledby="hero-heading">
       {/* Background gradients */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_50%,rgba(10,61,145,0.15),transparent_60%)]" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_80%,rgba(255,106,0,0.05),transparent_50%)]" />
@@ -26,6 +26,7 @@ export function HomeHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              id="hero-heading"
               className="text-5xl sm:text-6xl lg:text-[72px] font-heading font-black text-[var(--text-primary)] leading-[0.9] tracking-tighter uppercase"
             >
               Building<br />
@@ -53,7 +54,7 @@ export function HomeHero() {
           >
             <Link href="/contact" className="w-full sm:w-auto">
               <Button size="lg" className="w-full">
-                Schedule a Confidential Consultation
+                Schedule a Consultation
               </Button>
             </Link>
             <Link href="/services" className="w-full sm:w-auto">

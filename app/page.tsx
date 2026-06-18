@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { Database, Map as MapIcon, Globe, ShieldCheck, TrendingUp } from "lucide-react";
 import { SectionHeading } from "@/components/common/section-heading";
 import { Reveal } from "@/components/common/reveal";
 import { HomeHero } from "@/components/hero/home-hero";
@@ -9,6 +10,15 @@ import { ImagePanel } from "@/components/common/image-panel";
 import { StatsInfographic } from "@/components/common/stats-infographic";
 import { homeCoreServices, processSteps, whyChooseUs } from "@/lib/constants";
 import { siteConfig } from "@/config/site";
+
+const whyChooseUsIcons: Record<string, React.ElementType> = {
+  Database,
+  Map: MapIcon,
+  Globe,
+  ShieldCheck,
+  TrendingUp,
+};
+
 
 export default function HomePage() {
   const organizationSchema = {
@@ -123,23 +133,7 @@ export default function HomePage() {
 
             <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {whyChooseUs.map((item, index) => {
-                const IconComponent = (() => {
-                  const {
-                    Database,
-                    Map: MapIcon,
-                    Globe,
-                    ShieldCheck,
-                    TrendingUp
-                  } = require("lucide-react");
-                  const icons: Record<string, any> = {
-                    Database,
-                    Map: MapIcon,
-                    Globe,
-                    ShieldCheck,
-                    TrendingUp
-                  };
-                  return icons[item.iconName];
-                })();
+                const IconComponent = whyChooseUsIcons[item.iconName];
 
                 return (
                   <Reveal key={item.title} delay={index * 0.1}>
@@ -200,7 +194,7 @@ export default function HomePage() {
       </section>
 
       <CtaSection
-        title="READY TO BUILD A\nWINNING CAMPAIGN?"
+        title={"READY TO BUILD A\nWINNING CAMPAIGN?"}
         description="Let's create a strategy that delivers results."
         buttonLabel="Request Strategy Consultation"
       />

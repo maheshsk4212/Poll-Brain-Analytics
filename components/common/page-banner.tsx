@@ -24,7 +24,8 @@ export function PageBanner({
       <div className="relative isolate overflow-hidden rounded-[2rem] border border-white/20 bg-slate-950 shadow-premium min-h-[400px] flex flex-col justify-center">
         <Image
           src={image}
-          alt={title}
+          alt=""
+          role="presentation"
           width={1600}
           height={900}
           className="absolute inset-0 -z-20 h-full w-full object-cover"

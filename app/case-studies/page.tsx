@@ -3,11 +3,15 @@ import { PageBanner } from "@/components/common/page-banner";
 import { SectionHeading } from "@/components/common/section-heading";
 import { CaseStudyCard } from "@/components/case-study-card";
 import { caseStudies } from "@/lib/constants";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "Selected campaign engagements showing challenge, strategic approach and measurable outcomes."
+    "Selected campaign engagements showing challenge, strategic approach and measurable outcomes.",
+  alternates: {
+    canonical: `${siteConfig.domain}/case-studies`
+  }
 };
 
 export default function CaseStudiesPage() {
@@ -16,7 +20,7 @@ export default function CaseStudiesPage() {
       <PageBanner
         eyebrow="Case Studies"
         title="Selected Campaign Engagements"
-        description="Representative examples below are placeholders and can be replaced with approved public case studies."
+        description="A look at how we have helped candidates and parties navigate complex electoral environments with data-driven strategy, disciplined ground execution, and narrative precision."
         image="/images/campaign-outreach.png"
       />
 

@@ -9,9 +9,11 @@ export function SiteFooter() {
       <div className="relative">
         <Image
           src="/images/hyderabad-night.jpg"
-          alt="Hyderabad city skyline"
+          alt=""
+          role="presentation"
           width={1600}
           height={900}
+          loading="lazy"
           className="absolute inset-0 h-full w-full object-cover opacity-25"
         />
         <div className="absolute inset-0 bg-background/90" />
@@ -20,8 +22,18 @@ export function SiteFooter() {
           <div>
             <h3 className="text-xl font-semibold">{siteConfig.name}</h3>
             <p className="mt-2 max-w-sm text-sm text-[var(--text-secondary)]">{siteConfig.tagline}</p>
-            <p className="mt-4 text-sm text-[var(--text-secondary)]">Email: {siteConfig.email}</p>
-            <p className="text-sm text-[var(--text-secondary)]">Phone: {siteConfig.phone}</p>
+            <p className="mt-4 text-sm text-[var(--text-secondary)]">
+              Email:{" "}
+              <a href={`mailto:${siteConfig.email}`} className="hover:text-saffron transition-colors duration-200">
+                {siteConfig.email}
+              </a>
+            </p>
+            <p className="text-sm text-[var(--text-secondary)]">
+              Phone:{" "}
+              <a href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`} className="hover:text-saffron transition-colors duration-200">
+                {siteConfig.phone}
+              </a>
+            </p>
             <p className="text-sm text-[var(--text-secondary)]">Office: {siteConfig.office}</p>
             <div className="mt-5 h-1.5 w-36 rounded-full bg-gradient-to-r from-saffron via-white to-indiaGreen" />
           </div>

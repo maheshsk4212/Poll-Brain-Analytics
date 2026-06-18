@@ -11,7 +11,14 @@ type CaseStudyCardProps = {
 export function CaseStudyCard({ title, challenge, approach, outcome, image }: CaseStudyCardProps) {
   return (
     <article className="group overflow-hidden rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-saffron/40">
-      <Image src={image} alt={title} width={1600} height={900} className="h-56 w-full object-cover" />
+      <Image
+        src={image}
+        alt={title}
+        width={1600}
+        height={900}
+        className="h-56 w-full object-cover"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+      />
       <div className="p-6">
         <h3 className="text-xl font-heading font-bold uppercase tracking-tight text-[var(--text-primary)]">{title}</h3>
         <dl className="mt-4 space-y-3 text-sm">

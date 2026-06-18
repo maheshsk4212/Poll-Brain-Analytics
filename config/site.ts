@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Poll Brain Analytics",
+  name: "Poll Brain Digital",
   tagline: "Building Strategies To Triumph",
   description:
     "Strategic political consulting firm delivering data-driven election strategy, ground operations, media narrative management, and digital campaign execution.",

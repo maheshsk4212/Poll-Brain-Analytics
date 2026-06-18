@@ -7,7 +7,10 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Connect confidentially with Poll Brain Analytics for strategic political consulting and campaign advisory."
+    "Connect confidentially with Poll Brain for strategic political consulting and campaign advisory.",
+  alternates: {
+    canonical: `${siteConfig.domain}/contact`
+  }
 };
 
 export default function ContactPage() {
@@ -30,13 +33,19 @@ export default function ContactPage() {
               <h3 className="text-xl font-heading font-black tracking-tight text-[var(--text-primary)] uppercase">Direct Contact</h3>
               <ul className="mt-4 space-y-3 text-sm text-[var(--text-secondary)]">
                 <li>
-                  <span className="font-bold text-[var(--text-primary)] uppercase tracking-wider text-xs">Email:</span> {siteConfig.email}
+                  <span className="font-bold text-[var(--text-primary)] uppercase tracking-wider text-xs">Email: </span>
+                  <a href={`mailto:${siteConfig.email}`} className="hover:text-saffron transition-colors duration-200">
+                    {siteConfig.email}
+                  </a>
                 </li>
                 <li>
-                  <span className="font-bold text-[var(--text-primary)] uppercase tracking-wider text-xs">Phone:</span> {siteConfig.phone}
+                  <span className="font-bold text-[var(--text-primary)] uppercase tracking-wider text-xs">Phone: </span>
+                  <a href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`} className="hover:text-saffron transition-colors duration-200">
+                    {siteConfig.phone}
+                  </a>
                 </li>
                 <li>
-                  <span className="font-bold text-[var(--text-primary)] uppercase tracking-wider text-xs">Office:</span> {siteConfig.office}
+                  <span className="font-bold text-[var(--text-primary)] uppercase tracking-wider text-xs">Office: </span>{siteConfig.office}
                 </li>
               </ul>
 

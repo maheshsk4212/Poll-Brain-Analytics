@@ -3,14 +3,17 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { navItems } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { useTheme } from "@/components/ui/theme-provider";
 
 export function SiteNavbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 14);
@@ -33,12 +36,16 @@ export function SiteNavbar() {
       <nav className="section-shell flex h-24 items-center justify-between" aria-label="Main navigation">
         <Link
           href="/"
-          className="group inline-flex items-center gap-2 px-1 py-2"
+          className="group inline-flex items-center px-1 py-2"
         >
-          <span className="inline-block h-8 w-1.5 rounded-sm bg-saffron shadow-[0_0_12px_rgba(255,106,0,0.6)]" aria-hidden="true" />
-          <span className="text-xl font-bold font-heading tracking-tight text-white uppercase transition-colors duration-300">
-            Poll Brain <span className="text-saffron">Analytics</span>
-          </span>
+          <Image
+            src={theme === "light" ? "/images/Logo Light.png" : "/images/Logo Dark.png"}
+            alt="Poll Brain Digital"
+            width={180}
+            height={48}
+            className="h-12 w-auto object-contain transition-all duration-300"
+            priority
+          />
         </Link>
 
         <div className="flex items-center gap-3 lg:hidden">

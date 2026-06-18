@@ -25,18 +25,30 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`
   },
   description: siteConfig.description,
+  alternates: {
+    canonical: siteConfig.domain
+  },
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,
     url: siteConfig.domain,
     siteName: siteConfig.name,
     locale: "en_IN",
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — ${siteConfig.tagline}`
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
-    description: siteConfig.description
+    description: siteConfig.description,
+    images: ["/og-image.png"]
   }
 };
 
@@ -46,8 +58,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="dark">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      {/* Blocking script: reads localStorage before React hydrates to prevent theme flash (FOUC) */}
       <body className={`${montserrat.variable} ${inter.variable} bg-background font-sans text-white antialiased`}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('pba-theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){}})()`,
+          }}
+        />
         <ThemeProvider>
           <SiteNavbar />
           <main className="min-h-screen pt-20">{children}</main>

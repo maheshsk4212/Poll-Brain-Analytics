@@ -24,6 +24,7 @@ export function InsightsGrid() {
             key={category}
             type="button"
             onClick={() => setActive(category)}
+            aria-pressed={active === category}
             className={cn(
               "rounded-sm border px-4 py-2 text-sm font-bold uppercase tracking-wider transition-all duration-200",
               active === category
@@ -39,7 +40,14 @@ export function InsightsGrid() {
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {filtered.map((post) => (
           <article key={post.title} className="group overflow-hidden rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-saffron/40">
-            <Image src={post.image} alt={post.title} width={1600} height={900} className="h-48 w-full object-cover" />
+            <Image
+              src={post.image}
+              alt={post.title}
+              width={1600}
+              height={900}
+              className="h-48 w-full object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
             <div className="p-5">
               <p className="text-xs font-bold uppercase tracking-widest text-saffron">{post.category}</p>
               <h3 className="mt-3 text-lg font-heading font-bold tracking-tight text-[var(--text-primary)]">{post.title}</h3>

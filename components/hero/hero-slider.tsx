@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Play, Pause } from "lucide-react";
 
 const slides = [
     {
@@ -29,13 +30,15 @@ const slides = [
 
 export function HeroSlider() {
     const [current, setCurrent] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(true);
 
     useEffect(() => {
+        if (!isPlaying) return;
         const interval = setInterval(() => {
             setCurrent((prev) => (prev + 1) % slides.length);
         }, 4000);
         return () => clearInterval(interval);
-    }, []);
+    }, [isPlaying]);
 
     return (
         <div className="relative h-[420px] lg:h-[560px] w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
@@ -83,17 +86,30 @@ export function HeroSlider() {
                 </motion.div>
             </AnimatePresence>
 
-            {/* Dot indicators */}
-            <div className="absolute bottom-5 right-5 z-20 flex gap-1.5">
-                {slides.map((_, i) => (
-                    <button
-                        key={i}
-                        onClick={() => setCurrent(i)}
-                        aria-label={`Go to slide ${i + 1}`}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-saffron" : "w-1.5 bg-white/40 hover:bg-white/70"
-                            }`}
-                    />
-                ))}
+            {/* Play/Pause & Dot indicators */}
+            <div className="absolute bottom-5 right-5 z-20 flex items-center gap-3 bg-black/40 backdrop-blur-md px-3 py-2 rounded-full border border-white/10">
+                <button
+                    onClick={() => setIsPlaying(!isPlaying)}
+                    aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+                    className="text-white/80 hover:text-white transition-colors duration-200"
+                >
+                    {isPlaying ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+                </button>
+                <div className="flex gap-1.5 border-l border-white/20 pl-3">
+                    {slides.map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => {
+                                setCurrent(i);
+                                setIsPlaying(false);
+                            }}
+                            aria-label={`Go to slide ${i + 1}`}
+                            aria-current={i === current ? "true" : undefined}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-saffron" : "w-1.5 bg-white/40 hover:bg-white/70"
+                                }`}
+                        />
+                    ))}
+                </div>
             </div>
 
             {/* Animated scan line */}

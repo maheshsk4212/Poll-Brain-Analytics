@@ -3,11 +3,15 @@ import { PageBanner } from "@/components/common/page-banner";
 import { SectionHeading } from "@/components/common/section-heading";
 import { ImagePanel } from "@/components/common/image-panel";
 import { values } from "@/lib/constants";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about Poll Brain Analytics vision, mission, values and leadership approach for disciplined election consulting."
+    "Learn about Poll Brain's vision, mission, values and leadership approach for disciplined election consulting.",
+  alternates: {
+    canonical: `${siteConfig.domain}/about`
+  }
 };
 
 export default function AboutPage() {
@@ -22,12 +26,12 @@ export default function AboutPage() {
 
       <section className="section-shell mt-16 grid items-stretch gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <article className="rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 shadow-[var(--shadow-card)]">
-          <h2 className="text-2xl font-heading font-bold text-[var(--text-primary)]">Our Vision</h2>
+          <h3 className="text-2xl font-heading font-bold text-[var(--text-primary)]">Our Vision</h3>
           <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)]">
             To elevate political campaigns through intelligence, integrity and precision, building leadership that resonates with people and sustains trust.
           </p>
 
-          <h2 className="mt-8 text-2xl font-heading font-bold text-[var(--text-primary)]">Our Mission</h2>
+          <h3 className="mt-8 text-2xl font-heading font-bold text-[var(--text-primary)]">Our Mission</h3>
           <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)]">
             To provide candidates and parties with structured campaign architecture integrating data insights, narrative control, grassroots mobilisation and measurable outcomes.
           </p>
